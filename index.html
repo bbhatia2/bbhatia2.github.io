@@ -66,12 +66,59 @@
 
         d3.csv("https://raw.githubusercontent.com/bbhatia2/bbhatia2.github.io/main/airbnb_1.csv", function(data_) {
             for (let i = 0; i < data_.length; i++) {
-                if (data_[i].Neighbourhood == "Bronx") {
-                    Bronx_sum += 1;
+
+                if (data[i]['Neighbourhood'] == 'Bronx') {
+                    Bronx_sum += parseInt(data[i]['Number_Of_Reviews']);
+                    console.log("bahaar");
                 }
-             }
-             //console.log(data_);   
-             console.log(Bronx_sum);     
+
+
+                if (data[i]['Neighbourhood'] == 'Brooklyn') {
+                    Brooklyn_sum += parseInt(data[i]['Number_Of_Reviews']);
+                }
+                if (data[i]['Neighbourhood'] == 'Queens') {
+                    Queens_sum += parseInt(data[i]['Number_Of_Reviews']);
+                }
+                if (data[i]['Neighbourhood'] == 'Manhattan') {
+                    Manhattan_sum += parseInt(data[i]['Number_Of_Reviews']);
+                    if (data[i]['Room_Type'] == 'Entire home/apt') {
+                    entire_home += 1;
+
+                        if (data[i]['Beds'] >= 0 & data[i]['Beds'] <= 2 ) {
+                        bin0 += 1;
+                        }
+                        if (data[i]['Beds'] > 2 & data[i]['Beds'] <= 4 ) {
+                        bin2+= 1;
+                        }
+                        if (data[i]['Beds'] > 4 & data[i]['Beds'] <= 6 ) {
+                        bin4+=1;
+                        }
+                        if (data[i]['Beds'] > 6 ) {
+                        bin6+= 1;
+                        }
+
+
+                }
+                if (data[i]['Room_Type'] == 'Private room') {
+                    private_room += 1;
+                }
+                if (data[i]['Room_Type'] == 'Shared room') {
+                    shared_room += 1;
+                }
+
+                }
+            if (data[i]['Neighbourhood'] == 'Staten Island') {
+                StatenIsland_sum += parseInt(data[i]['Number_Of_Reviews']);
+            }
+
+
+
+
+            
+
+
+            }
+            
         });
 
         console.log(Bronx_sum);
